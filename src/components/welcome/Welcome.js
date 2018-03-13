@@ -1,11 +1,14 @@
-import React, { Component}  from 'react';
+import React from 'react';
 
-function Welcome (props) {
-    return <div>
+class Welcome extends React.Component {
+  render() {
+    return (<div>
       <h3> Welcome React </h3>
-      <h4> Name: {props.name} </h4>
-      <h5> Age: {props.age} </h5>
-      <h5> Phone: {props.phone} </h5>
+      <h4> Name: {this.props.name} </h4>
+      <h5> Age: {this.props.age} </h5>
+      <h5> Phone: {this.props.phone} </h5>
     </div>
+    )
+  } 
 }
 export default Welcome;

@@ -16,6 +16,11 @@ import Calculator from './components/lifting-state/LiftingState';
 import Chat from './components/react-use-as-prop/ReactObjectIsProp';
 import Contacts from './components/react-use-as-prop/ReactObjectIsProp';
 import SplitPane from './components/react-use-as-prop/ReactObjectIsProp';
+// Router
+import BasicExample from './routers/HeaderRouter';
+import AuthRedirect from './routers/AuthRedirect';
+import CustomLink from './routers/CustomLink';
+import RouterConfig from './routers/RouterConfig';
 
 class App extends Component {
 	constructor(props) {
@@ -26,14 +31,25 @@ class App extends Component {
 	}
 	handleSearchChange = (event) => {
 		console.log('event.target.value', event.target.value);
-		this.state.phone = event;
+		//this.state.phone = event;
+		this.setState({
+			phone: event.target.value
+		});
 		console.log('this.state.phone', this.state.phone);
+
 	}
 
 	render() {
 		return (
 			<div className="App">
 				<Header></Header>
+				<div className="router">
+					<AuthRedirect/>
+					<BasicExample/>
+					<CustomLink/>
+					<RouterConfig/>
+				</div>
+
 				<div className="container">
 					<InputSearch textChange={this.handleSearchChange} />
 				</div>
@@ -55,6 +71,7 @@ class App extends Component {
 				<div className="react-as-prop">
 					<SplitPane left={Chat} right={Contacts}/>
 				</div>
+				
 				<Footer></Footer>
 			</div>
 		);

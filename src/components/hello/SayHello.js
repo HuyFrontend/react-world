@@ -1,5 +1,5 @@
 import React from 'react';
-var createReactClass = require('create-react-class');
+// var createReactClass = require('create-react-class');
 
 /** BEST way to create CLASS
  * dont need to bind event,  to create component in REACT */

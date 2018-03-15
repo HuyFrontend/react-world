@@ -10,7 +10,7 @@ class Footer extends Component {
     }
     render() {
         return (
-            <div className="footer container-lg px-3">
+            <div className={`footer ${this.props.defaultClassName}`}>
                 <div className="position-relative d-flex flex-justify-between py-6 mt-6 f6 text-gray border-top border-gray-light ">
                     <ul className="list-style-none d-flex flex-wrap ">
                         <li className="mr-3">© 2018 <span title="0.36853s from unicorn-1961529401-hq9v5">GitHub</span>, Inc.</li>
@@ -21,4 +21,8 @@ class Footer extends Component {
         );
     }
 }
+
+Footer.defaultProps = {
+	defaultClassName: 'Footer',
+};
 export default Footer;

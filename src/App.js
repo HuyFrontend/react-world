@@ -28,6 +28,8 @@ import Github from './components/github-api/Github';
 //Handle Events
 import ManageCountry from './components/country/ManageCountry';
 
+// List
+import WelcomeList from './components/welcome/WelcomeList';
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -61,6 +63,7 @@ class App extends Component {
 					<InputSearch textChange={this.handleSearchChange} />
 				</div>
 				<Welcome name="Sara" age="29" phone={this.state.phone} />
+				<Welcome />
 				<SayHello propName="Huy" />
 
 				<div className="form-fields">
@@ -80,9 +83,13 @@ class App extends Component {
 				</div>
 				<div className="api">
 					<Github userName={this.state.gihubUserName}/>
+					<Github />
 				</div>
 				<div>
 					<ManageCountry/>
+				</div>
+				<div className="list">
+					<WelcomeList/>
 				</div>
 				<Footer></Footer>
 			</div>
@@ -90,4 +97,7 @@ class App extends Component {
 	}
 }
 
+App.defaultProps = {
+	defaultClassName: 'defaultClassName',
+};
 export default App;

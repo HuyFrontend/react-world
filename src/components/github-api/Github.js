@@ -57,4 +57,9 @@ class Github extends Component {
 		)
 	}
 }
+Github.defaultProps = {
+	className: 'icon-large',
+	userName: 'huyvoxuan'
+};
+
 export default Github;

@@ -22,11 +22,18 @@ import AuthRedirect from './routers/AuthRedirect';
 import CustomLink from './routers/CustomLink';
 import RouterConfig from './routers/RouterConfig';
 
+// Api
+import Github from './components/github-api/Github';
+
+//Handle Events
+import ManageCountry from './components/country/ManageCountry';
+
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			phone: '017 264 2108'
+			phone: '017 264 2108',
+			gihubUserName: 'huyvoxuan8489'
 		};
 	}
 	handleSearchChange = (event) => {
@@ -71,7 +78,12 @@ class App extends Component {
 				<div className="react-as-prop">
 					<SplitPane left={Chat} right={Contacts}/>
 				</div>
-				
+				<div className="api">
+					<Github userName={this.state.gihubUserName}/>
+				</div>
+				<div>
+					<ManageCountry/>
+				</div>
 				<Footer></Footer>
 			</div>
 		);

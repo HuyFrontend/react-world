@@ -37,18 +37,37 @@ class App extends Component {
 			phone: '017 264 2108',
 			gihubUserName: 'huyvoxuan8489'
 		};
+		console.log('constructor');
+	}
+	componentWillMount = () => {
+		console.log('componentWillMount');
+		sessionStorage.setItem('isUserLogged', false);
+	}
+	componentDidMount() {
+		console.log('componentDidMount');
+		sessionStorage.setItem('isUserLogged', false);
 	}
 	handleSearchChange = (event) => {
 		console.log('event.target.value', event.target.value);
 		//this.state.phone = event;
+		
 		this.setState({
 			phone: event.target.value
 		});
+		// this.setState((prevState, props) => {
+		// 	debugger;
+		// 	return {
+		// 		phone: prevState.phone + props.newPhone
+		// 	};
+		// });
+
 		console.log('this.state.phone', this.state.phone);
 
 	}
 
 	render() {
+		console.log('init fn: render');
+		console.log('init state', this.state.myName);
 		return (
 			<div className="App">
 				<Header></Header>
@@ -99,5 +118,8 @@ class App extends Component {
 
 App.defaultProps = {
 	defaultClassName: 'defaultClassName',
+	newPhone: ''
+
 };
+
 export default App;

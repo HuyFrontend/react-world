@@ -167,5 +167,60 @@ componentWillReceiveProps(newProps) {
 componentWillReceiveProps({ active }) {
   this.setState({ active });
 }
+////////////////////////////////////////
+/** defaultProps */
+class CustomButton extends React.Component {
+  // ...
+}
+CustomButton.defaultProps = {
+  color: 'blue'
+};
+// If props.color is not provided, it will be set by default to 'blue':
+render() {
+  return <CustomButton /> ; // props.color will be set to blue
+}
+// If props.color is set to null, it will remain null:
+render() {
+  return <CustomButton color={null} /> ; // props.color will remain null
+}
+/** props */
+// In particular, this.props.children is a special prop, typically defined by the child tags in the JSX expression rather than in the tag itself.
 
 ```
+////////////////////////////////////////
+The Component Lifecycle
+////////////////////////////////////////
+I. Mounting
+These methods are called when an instance of a component is being created and inserted into the DOM:
+1. constructor()
+2. componentWillMount()
+3. render()
+4. componentDidMount()
+
+II. Updating:
+An update can be caused by changes to props or state. These methods are called when a component is being re-rendered:
+1. componentWillReceiveProps()
+2. shouldComponentUpdate()
+3. componentWillUpdate()
+4. render()
+5. componentDidUpdate()
+
+III. Unmounting
+This method is called when a component is being removed from the DOM:
+1. componentWillUnmount()
+
+IV. Error Handling
+This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+1. componentDidCatch()
+
+V. Other APIs
+V1.Each component also provides some other APIs:
+1. setState()
+2. forceUpdate()
+V2. Class Properties
+1. defaultProps
+2. displayName
+V3. Instance Properties
+1. props
+2. state
+//////////////////////////////////////////////////

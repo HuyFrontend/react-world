@@ -7,13 +7,13 @@ import {
     withRouter
 } from 'react-router-dom';
 
-async function sendRequest() {
-    debugger;
-    const response = null;
-    //const data = await response.json();
-    //console.log('data', data);
-};
-sendRequest();
+// async function sendRequest() {
+//     debugger;
+//     const response = null;
+//     //const data = await response.json();
+//     //console.log('data', data);
+// };
+// sendRequest();
 
 ////////////////////////////////////////////////////////////
 // 1. Click the public page

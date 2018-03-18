@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 // import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/Header';
@@ -30,6 +32,34 @@ import ManageCountry from './components/country/ManageCountry';
 
 // List
 import WelcomeList from './components/welcome/WelcomeList';
+
+// Redux
+import Counter from './redux/Counter';
+
+
+function reducer(state = {count: 10}, action) {
+	console.log(2);
+	switch(action.type) {
+	  case 'INCREMENT':
+		return {
+		  count: state.count + 1
+		};
+	  case 'DECREMENT':
+		return {
+		  count: state.count - 1
+		};
+	  default:
+		return state;
+	}
+}
+  
+// const store = createStore(reducer);
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+	reducer, /* preloadedState, */
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+/* eslint-enable */
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -48,18 +78,10 @@ class App extends Component {
 		sessionStorage.setItem('isUserLogged', false);
 	}
 	handleSearchChange = (event) => {
-		console.log('event.target.value', event.target.value);
-		//this.state.phone = event;
 		
 		this.setState({
 			phone: event.target.value
 		});
-		// this.setState((prevState, props) => {
-		// 	debugger;
-		// 	return {
-		// 		phone: prevState.phone + props.newPhone
-		// 	};
-		// });
 
 		console.log('this.state.phone', this.state.phone);
 
@@ -68,6 +90,7 @@ class App extends Component {
 	render() {
 		console.log('init fn: render');
 		console.log('init state', this.state.myName);
+		// const store = createStore();
 		return (
 			<div className="App">
 				<Header></Header>
@@ -109,6 +132,9 @@ class App extends Component {
 				</div>
 				<div className="list">
 					<WelcomeList/>
+				</div>
+				<div className="redux">
+					<Counter store={store}/>
 				</div>
 				<Footer></Footer>
 			</div>

@@ -21,24 +21,32 @@ import {
 // 3. Log in
 // 4. Click the back button, note the URL each time
 
-const AuthRedirect = () => (
-    <Router>
-        <div>
-            <AuthButton />
-            <ul>
-                <li>
-                    <Link to="/public">Public Page</Link>
-                </li>
-                <li>
-                    <Link to="/protected">Protected Page</Link>
-                </li>
-            </ul>
-            <Route path="/public" component={Public} />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/protected" component={Protected} />
-        </div>
-    </Router>
-);
+class AuthRedirect extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        const autLinks = [
+            { path: '/login', component: 'Login' },
+            { path: '/public', component: 'Public' },
+            { path: '/protected', component: 'Protected' },
+        ];
+        return (
+            <Router>
+                <div>
+                    <AuthButton />
+                    <ul>
+                        <li><Link to={autLinks[1].path}>Public Page</Link></li>
+                        <li><Link to={autLinks[2].path}>Protected Page</Link></li>
+                    </ul>
+                    <Route path={autLinks[1].path} component={autLinks[1].component} />
+                    <Route path="/login" component={Login} />
+                    <PrivateRoute path="/protected" component={Protected} />
+                </div>
+            </Router>
+        )
+    }
+}
 
 const fakeAuth = {
     isAuthenticated: false,

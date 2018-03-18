@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Counter extends React.Component {
+
     increment = () => {
-        console.log(1);
+        console.log('step 1 in redux');
+        // dispatch
         this.props.dispatch({ type: 'INCREMENT' });
     }
     
@@ -13,13 +15,13 @@ class Counter extends React.Component {
     
 
     render() {
-        console.log(3);
+        console.log('step 3 in redux');
         return (
             <div>
                 <h2>Counter</h2>
                 <div>
                     <button onClick={this.decrement}>-</button>
-                    <span>{this.props.count}</span>
+                    <p>{this.props.count}</p>
                     <button onClick={this.increment}>+</button>
                 </div>
             </div>

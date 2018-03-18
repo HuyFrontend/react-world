@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 // import logo from './logo.svg';
 import './App.css';
@@ -38,7 +37,7 @@ import Counter from './redux/Counter';
 
 
 function reducer(state = {count: 10}, action) {
-	console.log(2);
+	console.log('step 2 in redux');
 	switch(action.type) {
 	  case 'INCREMENT':
 		return {

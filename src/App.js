@@ -33,8 +33,8 @@ import ManageCountry from './components/country/ManageCountry';
 import WelcomeList from './components/welcome/WelcomeList';
 
 // Redux
-import Counter from './redux/Counter';
-
+import Counter1 from './redux/counter1/Counter';
+import CounterContainer from './redux/counter2/CounterContainer';
 
 function reducer(state = {count: 10}, action) {
 	console.log('step 2 in redux');
@@ -133,7 +133,8 @@ class App extends Component {
 					<WelcomeList/>
 				</div>
 				<div className="redux">
-					<Counter store={store}/>
+					<Counter1 store={store}/>
+					<CounterContainer/>
 				</div>
 				<Footer></Footer>
 			</div>

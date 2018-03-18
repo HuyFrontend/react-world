@@ -27,9 +27,9 @@ class AuthRedirect extends React.Component {
     }
     render() {
         const autLinks = [
-            { path: '/login', component: 'Login' },
-            { path: '/public', component: 'Public' },
-            { path: '/protected', component: 'Protected' },
+            { path: '/login', component: Login },
+            { path: '/public', component: Public },
+            { path: '/protected', component: Protected },
         ];
         return (
             <Router>

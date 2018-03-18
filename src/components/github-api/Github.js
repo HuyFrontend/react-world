@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-// import { BaseService } from 'shared/services/base.service';
+import URL from '../../api/URL';
+import sendRequest from '../../api/BaseAPI';
+
 class Github extends Component {
 	
 	constructor(props) {
@@ -22,9 +24,9 @@ class Github extends Component {
 		}).then( (data) => {
 			return data.json();
 		}).then( (data) => {
-      this.setState({
-      	githubData: data
-      });
+			this.setState({
+				githubData: data
+			});
 		}, (data) => {
 			// throw case will runin here!! 
 			this.setState({

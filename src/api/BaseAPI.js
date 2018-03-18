@@ -1,15 +1,26 @@
-const url = 'https://randomuser.me/api';
-// The data we are going to send in our request
-let data = {
-    name: 'Sara'
-}
-// The parameters we are gonna pass to the fetch function
-let fetchData = {
-    method: 'POST',
-    body: data,
-    headers: new Headers()
-}
-fetch(url, fetchData)
-    .then(function () {
-        // Handle response you get from the server
-    });
+
+// import 'isomorphic-fetch';
+
+const defaultHeaders = {
+    'Content-Type': 'application/json; charset=UTF-8',
+};
+
+export default async function sendRequest(url, options = {}) {
+    
+    const optionMapping = {
+        method: 'POST', // default method
+        ...defaultHeaders,
+        ...options,
+    };
+    const response = await fetch(
+        url, optionMapping,
+    );
+    
+    const data = await response.json();
+    
+    if (data.error) {
+        throw new Error(data.error);
+    }
+    console.log('data', data);
+    return data;
+};

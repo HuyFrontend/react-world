@@ -120,7 +120,7 @@ class App extends Component {
 				</div>
 
 				<div className="react-as-prop">
-					<SplitPane left={Chat} right={Contacts}/>
+					{/* <SplitPane left={Chat} right={Contacts}/> */}
 				</div>
 				<div className="api">
 					<Github userName={this.state.gihubUserName}/>

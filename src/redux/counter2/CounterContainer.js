@@ -4,14 +4,15 @@ import { increment, decrement } from './CounterActions';
 import counterStore from './CounterStore';
 import Counter from './Counter';
 
-@Root
+// @Root
 export default class CounterContainer extends Component {
   render() {
     return (
-      <Container stores={counterStore}
-                 actions={{ increment, decrement }}>
-        {props => <Counter {...props} />}
-      </Container>
+      // <Container stores={counterStore}
+      //            actions={{ increment, decrement }}>
+      //   {props => <Counter {...props} />}
+      // </Container>
+      <h1>huy</h1>
     );
   }
 }

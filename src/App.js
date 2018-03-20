@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 // import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/Header';
@@ -35,6 +36,7 @@ import WelcomeList from './components/welcome/WelcomeList';
 // Redux
 import Counter1 from './redux/counter1/Counter';
 import CounterContainer from './redux/counter2/CounterContainer';
+import Root from './redux/api-example/Root';
 
 function reducer(state = {count: 10}, action) {
 	console.log('step 2 in redux');
@@ -132,10 +134,15 @@ class App extends Component {
 				<div className="list">
 					<WelcomeList/>
 				</div>
-				<div className="redux">
+				{/* just comment to use provider bellow */}
+				{/* <div className="redux">
 					<Counter1 store={store}/>
 					<CounterContainer/>
-				</div>
+				</div> */}
+				<Provider store={store}>
+					{/* <App /> */}
+					<Counter1/>
+				</Provider>
 				<Footer></Footer>
 			</div>
 		);

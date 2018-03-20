@@ -8,8 +8,6 @@ import Posts from './Posts'
 class AsyncApp extends Component {
     constructor(props) {
         super(props)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleRefreshClick = this.handleRefreshClick.bind(this)
     }
 
     componentDidMount() {
@@ -24,26 +22,29 @@ class AsyncApp extends Component {
         }
     }
 
-    handleChange(nextSubreddit) {
+    dropDownChangge = (nextSubreddit) => {
         this.props.dispatch(selectSubreddit(nextSubreddit))
         this.props.dispatch(fetchPostsIfNeeded(nextSubreddit))
     }
 
-    handleRefreshClick(e) {
+    handleRefreshClick = (e) => {
         e.preventDefault()
-
-        const { dispatch, selectedSubreddit } = this.props
-        dispatch(invalidateSubreddit(selectedSubreddit))
-        dispatch(fetchPostsIfNeeded(selectedSubreddit))
+        // const { dispatch, selectedSubreddit } = this.props;
+        // dispatch(invalidateSubreddit(selectedSubreddit))
+        // dispatch(fetchPostsIfNeeded(selectedSubreddit)) 
+        // can replace by followed :
+        this.props.dispatch(invalidateSubreddit(this.props.selectedSubreddit));
+        this.props.dispatch(fetchPostsIfNeeded(this.props.selectedSubreddit));
     }
 
     render() {
-        const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
+        const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
+        console.log('props', this.props);
         return (
             <div>
                 <Picker
                     value={selectedSubreddit}
-                    onChange={this.handleChange}
+                    onChange={this.dropDownChangge}
                     options={['reactjs', 'frontend']}
                 />
                 <p>

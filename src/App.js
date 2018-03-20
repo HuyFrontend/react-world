@@ -35,8 +35,6 @@ import WelcomeList from './components/welcome/WelcomeList';
 
 // Redux
 import Counter1 from './redux/counter1/Counter';
-import CounterContainer from './redux/counter2/CounterContainer';
-import Root from './redux/api-example/Root';
 
 function reducer(state = {count: 10}, action) {
 	console.log('step 2 in redux');

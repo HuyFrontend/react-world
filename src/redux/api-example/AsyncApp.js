@@ -85,7 +85,7 @@ function mapStateToProps(state) {
         items: posts
     } = postsBySubreddit[selectedSubreddit] || {
         isFetching: true,
-        items: []
+      items: []
     }
 
     return {

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import {
     SELECT_SUBREDDIT,
     INVALIDATE_SUBREDDIT,
@@ -54,6 +54,6 @@ function postsBySubreddit(state = {}, action) {
 const rootReducer = combineReducers({
     postsBySubreddit,
     selectedSubreddit
-})
+});
 
-export default rootReducer
+export default rootReducer;

@@ -9,9 +9,9 @@ class WelcomeList extends React.Component {
     render() {
         const className = this.props.className;
         const people = this.props.people;
-        const listItems = people.map((person) =>
+        const listItems = people.map((person, index) =>
             // <ListItem key={number.toString()} value={number} />
-            <Welcom name={person.name} age={person.age} phone={person.phone}/>
+            <Welcom key={index} name={person.name} age={person.age} phone={person.phone}/>
 
         );
         return (

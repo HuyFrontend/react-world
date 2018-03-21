@@ -45,7 +45,7 @@ class AsyncApp extends Component {
                 <Picker
                     value={selectedSubreddit}
                     onChange={this.dropDownChangge}
-                    options={['reactjs', 'frontend']}
+                    options={['reactjs', 'frontend', 'javascript', 'angularjs', 'rubyonrails', 'php']}
                 />
                 <p>
                     {lastUpdated &&

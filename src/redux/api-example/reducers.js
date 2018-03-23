@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
-import {
-    SELECT_SUBREDDIT,
-    INVALIDATE_SUBREDDIT,
-    REQUEST_POSTS,
-    RECEIVE_POSTS
-} from './actions'
+import {SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS } from './actions'
+import todos from '../redux-multiple/redux-reducers/todos';
+import counter from '../redux-multiple/redux-reducers/counter';
 
-function selectedSubreddit(state = 'reactjs', action) {
+function selectedSubreddit(state = 'javascript', action) {
     switch (action.type) {
         case SELECT_SUBREDDIT:
             return action.subreddit
@@ -27,6 +24,7 @@ function posts( state = { isFetching: false, didInvalidate: false, items: [] }, 
                 didInvalidate: false
             })
         case RECEIVE_POSTS:
+           
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
@@ -34,7 +32,7 @@ function posts( state = { isFetching: false, didInvalidate: false, items: [] }, 
                 lastUpdated: action.receivedAt
             })
         default:
-            return state
+            return state;
     }
 }
 
@@ -43,6 +41,7 @@ function postsBySubreddit(state = {}, action) {
         case INVALIDATE_SUBREDDIT:
         case RECEIVE_POSTS:
         case REQUEST_POSTS:
+            console.log('reducer file, postsBySubreddit function', action.type);
             return Object.assign({}, state, {
                 [action.subreddit]: posts(state[action.subreddit], action)
             })
@@ -53,7 +52,9 @@ function postsBySubreddit(state = {}, action) {
 
 const rootReducer = combineReducers({
     postsBySubreddit,
-    selectedSubreddit
+    selectedSubreddit,
+    todos, 
+    counter
 });
 
 export default rootReducer;

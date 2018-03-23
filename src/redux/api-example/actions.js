@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-
+// import { Observable } from 'rxjs';
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
@@ -35,17 +35,19 @@ function receivePosts(subreddit, json) {
     }
 }
 
-function fetchPosts(subreddit) {
+function fetchPosts(postCategory) {
     return dispatch => {
-        dispatch(requestPosts(subreddit))
-        return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+        dispatch(requestPosts(postCategory))
+        return fetch(`https://www.reddit.com/r/${postCategory}.json`)
             .then(response => response.json())
-            .then(json => dispatch(receivePosts(subreddit, json)))
+            .then((json) => {
+                return dispatch(receivePosts(postCategory, json))
+            });
     }
 }
 
-function shouldFetchPosts(state, subreddit) {
-    const posts = state.postsBySubreddit[subreddit]
+function shouldFetchPosts(state, postCategory) {
+    const posts = state.postsBySubreddit[postCategory]
     if (!posts) {
         return true
     } else if (posts.isFetching) {
@@ -53,12 +55,54 @@ function shouldFetchPosts(state, subreddit) {
     } else {
         return posts.didInvalidate
     }
-}
+};
 
-export function fetchPostsIfNeeded(subreddit) {
+export function postLoad(postCategory) {
     return (dispatch, getState) => {
-        if (shouldFetchPosts(getState(), subreddit)) {
-            return dispatch(fetchPosts(subreddit))
+        if (shouldFetchPosts(getState(), postCategory)) {
+            return dispatch(fetchPosts(postCategory))
         }
     }
-}
+};
+
+export function showAlert(state) {
+    console.log('123');
+    return (dispatch, getState) => {
+        console.log('dispatch', dispatch , getState);
+    }
+};
+
+/** observable */
+
+// action creators
+const FETCH_USER = 'FETCH_USER';
+const FETCH_USER_FULFILLED = 'FETCH_USER_FULFILLED';
+export const fetchUser = (username) => ({ type: FETCH_USER, payload: username });
+const fetchUserFulfilled = (payload) => ({ type: FETCH_USER_FULFILLED, payload });
+ 
+const fetchUserEpic = (action$) => {
+    debugger;
+    return 
+        action$.ofType(FETCH_USER)
+            .mergeMap((action) =>
+                fetch(`https://api.github.com/users/${action.payload}`)
+                    .map(response => fetchUserFulfilled(response))
+            );    
+};
+ 
+// later... 
+// dispatch(fetchUser('huyvoxuan'));
+
+
+// const fetchMe = (session) => {
+//     return fetch(`https://www.reddit.com/r/${session}.json`)
+//       .then((response) => response.json());
+// }
+// export const fetchMeEpic = (action$) => {
+//     console.log('action', action$);
+//       action$.ofType(actionTypes.SESSION_SET)
+//         .mergeMap((action) =>
+//           Observable.from(fetchMe(action.session))
+//             .map()
+//     ); 
+// }

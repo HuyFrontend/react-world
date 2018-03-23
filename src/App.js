@@ -138,7 +138,6 @@ class App extends Component {
 					<CounterContainer/>
 				</div> */}
 				<Provider store={store}>
-					{/* <App /> */}
 					<Counter1/>
 				</Provider>
 				<Footer></Footer>

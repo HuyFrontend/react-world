@@ -1,40 +1,39 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from './actions'
-import Picker from './Picker'
-import Posts from './Posts'
-
+import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit, postLoad } from './actions';
+import Picker from './Picker';
+import Posts from './Posts';
 class AsyncApp extends Component {
     constructor(props) {
         super(props)
     }
 
     componentDidMount() {
-        const { dispatch, selectedSubreddit } = this.props
-        dispatch(fetchPostsIfNeeded(selectedSubreddit))
+        const { dispatch, selectedSubreddit } = this.props;
+        dispatch(postLoad(this.props.selectedSubreddit));
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-            const { dispatch, selectedSubreddit } = this.props
-            dispatch(fetchPostsIfNeeded(selectedSubreddit))
+            const { dispatch, selectedSubreddit } = this.props;
+            dispatch(postLoad(selectedSubreddit));
         }
     }
 
     dropDownChangge = (nextSubreddit) => {
-        this.props.dispatch(selectSubreddit(nextSubreddit))
-        this.props.dispatch(fetchPostsIfNeeded(nextSubreddit))
+        this.props.dispatch(selectSubreddit(nextSubreddit));
+        this.props.dispatch(postLoad(nextSubreddit));
     }
 
     handleRefreshClick = (e) => {
         e.preventDefault()
         // const { dispatch, selectedSubreddit } = this.props;
         // dispatch(invalidateSubreddit(selectedSubreddit))
-        // dispatch(fetchPostsIfNeeded(selectedSubreddit)) 
+        // dispatch(postLoad(selectedSubreddit)) 
         // can replace by followed :
         this.props.dispatch(invalidateSubreddit(this.props.selectedSubreddit));
-        this.props.dispatch(fetchPostsIfNeeded(this.props.selectedSubreddit));
+        this.props.dispatch(postLoad(this.props.selectedSubreddit));
     }
 
     render() {
@@ -45,7 +44,7 @@ class AsyncApp extends Component {
                 <Picker
                     value={selectedSubreddit}
                     onChange={this.dropDownChangge}
-                    options={['reactjs', 'frontend', 'javascript', 'angularjs', 'rubyonrails', 'php']}
+                    options={['javascript', 'reactjs', 'frontend', 'angularjs', 'rubyonrails', 'php']}
                 />
                 <p>
                     {lastUpdated &&

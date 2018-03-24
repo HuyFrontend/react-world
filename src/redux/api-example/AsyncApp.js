@@ -10,11 +10,13 @@ class AsyncApp extends Component {
     }
 
     componentDidMount() {
+        console.log('componentDidMount');
         const { dispatch, selectedSubreddit } = this.props;
         dispatch(postLoad(this.props.selectedSubreddit));
     }
 
     componentDidUpdate(prevProps) {
+        console.log('componentDidUpdate');
         if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
             const { dispatch, selectedSubreddit } = this.props;
             dispatch(postLoad(selectedSubreddit));
@@ -22,11 +24,13 @@ class AsyncApp extends Component {
     }
 
     dropDownChangge = (nextSubreddit) => {
+        console.log('dropDownChangge');
         this.props.dispatch(selectSubreddit(nextSubreddit));
         this.props.dispatch(postLoad(nextSubreddit));
     }
 
     handleRefreshClick = (e) => {
+        console.log('handleRefreshClick');
         e.preventDefault()
         // const { dispatch, selectedSubreddit } = this.props;
         // dispatch(invalidateSubreddit(selectedSubreddit))
@@ -38,7 +42,6 @@ class AsyncApp extends Component {
 
     render() {
         const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
-        console.log('props', this.props);
         return (
             <div>
                 <Picker
@@ -77,7 +80,7 @@ AsyncApp.propTypes = {
 }
 
 function mapStateToProps(state) {
-    const { selectedSubreddit, postsBySubreddit } = state
+    const { selectedSubreddit, postsBySubreddit } = state;
     const {
         isFetching,
         lastUpdated,

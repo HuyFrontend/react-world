@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 // test redux
@@ -16,4 +16,8 @@ ReactDOM.render(<Root />, document.getElementById('root'));
 
 // build login redux
 // ReactDOM.render(<LoginRoot/>, document.getElementById('root'));
+
+
+// build easy redux;
+
 registerServiceWorker();

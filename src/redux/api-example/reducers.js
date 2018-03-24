@@ -13,6 +13,7 @@ function selectedSubreddit(state = 'javascript', action) {
 }
 
 function posts( state = { isFetching: false, didInvalidate: false, items: [] }, action ) {
+    console.log('post function, action:', action);
     switch (action.type) {
         case INVALIDATE_SUBREDDIT:
             return Object.assign({}, state, {
@@ -41,7 +42,7 @@ function postsBySubreddit(state = {}, action) {
         case INVALIDATE_SUBREDDIT:
         case RECEIVE_POSTS:
         case REQUEST_POSTS:
-            console.log('reducer file, postsBySubreddit function', action.type);
+            console.log('reducer file, postsBySubreddit function', action);
             return Object.assign({}, state, {
                 [action.subreddit]: posts(state[action.subreddit], action)
             })

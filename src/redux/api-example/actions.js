@@ -6,6 +6,7 @@ export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 
 export function selectSubreddit(subreddit) {
+    console.log('selectSubreddit');
     return {
         type: SELECT_SUBREDDIT,
         subreddit
@@ -13,6 +14,7 @@ export function selectSubreddit(subreddit) {
 }
 
 export function invalidateSubreddit(subreddit) {
+    console.log('invalidateSubreddit');
     return {
         type: INVALIDATE_SUBREDDIT,
         subreddit
@@ -20,6 +22,7 @@ export function invalidateSubreddit(subreddit) {
 }
 
 function requestPosts(subreddit) {
+    console.log('requestPosts');
     return {
         type: REQUEST_POSTS,
         subreddit
@@ -27,6 +30,7 @@ function requestPosts(subreddit) {
 }
 
 function receivePosts(subreddit, json) {
+    console.log('receivePosts');
     return {
         type: RECEIVE_POSTS,
         subreddit,
@@ -36,6 +40,7 @@ function receivePosts(subreddit, json) {
 }
 
 function fetchPosts(postCategory) {
+    console.log('fetchPosts');
     return dispatch => {
         dispatch(requestPosts(postCategory))
         return fetch(`https://www.reddit.com/r/${postCategory}.json`)
@@ -47,6 +52,7 @@ function fetchPosts(postCategory) {
 }
 
 function shouldFetchPosts(state, postCategory) {
+    console.log('shouldFetchPosts');
     const posts = state.postsBySubreddit[postCategory]
     if (!posts) {
         return true
@@ -58,6 +64,7 @@ function shouldFetchPosts(state, postCategory) {
 };
 
 export function postLoad(postCategory) {
+    console.log('postLoad');
     return (dispatch, getState) => {
         if (shouldFetchPosts(getState(), postCategory)) {
             return dispatch(fetchPosts(postCategory))
@@ -71,6 +78,13 @@ export function showAlert(state) {
         console.log('dispatch', dispatch , getState);
     }
 };
+
+
+
+
+
+
+
 
 /** observable */
 

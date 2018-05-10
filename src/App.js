@@ -37,7 +37,7 @@ import WelcomeList from './components/welcome/WelcomeList';
 import Counter1 from './redux/counter1/Counter';
 
 function reducer(state = {count: 10}, action) {
-	console.log('step 2 in redux');
+	console.log('step 2 in redux: reducer and return new states');
 	switch(action.type) {
 	  case 'INCREMENT':
 		return {

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 class AddCountry extends Component {
 	constructor() {
 		super();
-		this.handleClick = this.handleClick.bind(this);
 	}
-	handleClick() {
-		this.props.addCountry(this.props.country);
+	handleClick =() => {
+		if (!this.props.country) {
+			this.props.addCountry(this.props.country);
+		}
 	}
 	render() {
 		return (

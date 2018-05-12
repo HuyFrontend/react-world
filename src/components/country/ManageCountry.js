@@ -3,17 +3,14 @@ import AddCountry from './AddCountry';
 import CountryList from './CountryList';
 import DoneCountryList from './DoneCountryList';
 
-// import { UIRouter, UIView } from '@uirouter/react';
-// import { states, plugins } from './App-Routing';
-
 class ManageCountry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			countries: [
-				{ name: 'Viet', edit: false, done: false },
-				{ name: 'Thai', edit: false, done: false },
-				{ name: 'Cam', edit: false, done: false },
+				{ name: 'Vietnam', edit: false, done: false },
+				{ name: 'Thailand', edit: false, done: false },
+				{ name: 'Cambodia', edit: false, done: false },
 			],
 			country: ''
 		};

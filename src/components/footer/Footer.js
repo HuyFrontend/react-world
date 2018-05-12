@@ -23,6 +23,6 @@ class Footer extends Component {
 }
 
 Footer.defaultProps = {
-	defaultClassName: 'Footer',
+	defaultClassName: 'FooterCustomClass',
 };
 export default Footer;

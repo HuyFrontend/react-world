@@ -4,7 +4,7 @@ import {  BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const BasicExample = () => (
     <Router>
-        <div>
+        <div className="header-router">
             <ul>
                 <li>
                     <Link to="/">Home</Link>

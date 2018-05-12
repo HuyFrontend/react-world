@@ -2,31 +2,23 @@ import React, { Component } from 'react';
 class CountryList extends Component {
 	constructor() {
 		super();
-		this.editClick = this.editClick.bind(this);
-    this.saveClick = this.saveClick.bind(this);
-    this.deleteClick = this.deleteClick.bind(this);
-    this.doneClick = this.doneClick.bind(this);
 	}
 	/** 
 	 * events
 	 */
-	editClick(e) {
-		debugger;
+	editClick = (e) => {
 		this.props.editCountry(e.target.value);
 	}
-	saveClick(e) {
-		debugger;
+	saveClick = (e) => {
 		const { value, parentNode } = e.target;
 		const newCountry = parentNode.previousSibling.firstChild.value ? parentNode.previousSibling.firstChild.value : value;
 		this.props.saveCountry(value, newCountry);
 	}
-	doneClick(e) {
-		debugger;
+	doneClick = (e) => {
 		const { value } = e.target;
 		this.props.doneCountry(value);
 	}
-	deleteClick(e) {
-		debugger;
+	deleteClick = (e) => {
 		const { value } = e.target;
 		this.props.deleteCountry(value);
 	}

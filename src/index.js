@@ -10,11 +10,11 @@ import Root from './redux/api-example/Root';
 
 
 // build app default
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
 
 
 // build redux api
-// ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
 
 // build login redux
 // ReactDOM.render(<LoginRoot/>, document.getElementById('root'));

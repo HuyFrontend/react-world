@@ -4,7 +4,8 @@ class AddCountry extends Component {
 		super();
 	}
 	handleClick =() => {
-		if (!this.props.country) {
+		console.log(this.props, this.props.country);
+		if (this.props.country) {
 			this.props.addCountry(this.props.country);
 		}
 	}

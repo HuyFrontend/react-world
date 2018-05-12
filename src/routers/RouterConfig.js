@@ -32,21 +32,17 @@ const Cart = () => <h3>Cart</h3>;
 
 ////////////////////////////////////////////////////////////
 // then our route config
-const routes = [
-    {
-        path: "/sandwiches",
+const routes = [{
+        path: '/sandwiches',
         component: Sandwiches
-    },
-    {
-        path: "/tacos",
+    }, {
+        path: '/tacos',
         component: Tacos,
-        routes: [
-            {
-                path: "/tacos/bus",
+        routes: [{
+                path: '/tacos/bus',
                 component: Bus
-            },
-            {
-                path: "/tacos/cart",
+            }, {
+                path: '/tacos/cart',
                 component: Cart
             }
         ]
@@ -55,7 +51,7 @@ const routes = [
 
 // wrap <Route> and use this everywhere instead, then when
 // sub routes are added to any route it'll work
-const RouteWithSubRoutes = route => (
+const RouteWithSubRoutes = (route) => (
     <Route
         path={route.path}
         render={props => (
@@ -67,7 +63,8 @@ const RouteWithSubRoutes = route => (
 
 const RouteConfig = () => (
     <Router>
-        <div>
+        <div className="router-config">
+            <h3>Topic: Router Config</h3>
             <ul>
                 <li>
                     <Link to="/tacos">Tacos</Link>
@@ -76,7 +73,6 @@ const RouteConfig = () => (
                     <Link to="/sandwiches">Sandwiches</Link>
                 </li>
             </ul>
-
             {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
         </div>
     </Router>

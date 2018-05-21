@@ -1,5 +1,35 @@
 
 ```js
+/*************************/
+/****** NOTE *************/
+/*************************/
+
+//3. Print json object to html
+return (
+    <div>
+      <span>{JSON.stringify(formErrors)}</span>
+    </div>
+  )
+//2. className, htmlFor instead of for in label
+//1. onChange, onBlur, onKeyPress
+onBlur = (event) => {
+  this.setState({typed: event.target.value});
+},
+
+<input type="text" onBlur={this.onBlur} onKeyPress={this.handleEnterKeyPress} />
+handleEnterKeyPress: function (e) {
+  if(e.which == 13){
+    e.target.blur();
+  }
+  return false;
+}
+
+<div>
+  <input readOnly value={this.state.value} onChange={(e) => {this.handleChange(e)}} ref={(input)=> this.myinput = input}/>
+  <button onClick={this.handleClick.bind(this)}>Change Input</button>
+</div>
+ // ref={(input)=> this.myinput = input} Uncontrolled
+
 /************************/
 /****** CLEAN CODE ******/
 /************************/
@@ -8,7 +38,7 @@
 const MyComponent = () => (
   <div>
     <OtherComponent type="a" className="colorful" foo={123} bar={456} />
-    <OtherComponent type="b" className="colorful" foo={123} bar={456} />    
+    <OtherComponent type="b" className="colorful" foo={123} bar={456} />
   </div>
 );
 // Clean

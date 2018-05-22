@@ -3,6 +3,28 @@
 /*************************/
 /****** NOTE *************/
 /*************************/
+// 4. Utils
+// util.js
+export function foo() { console.log('foo') }
+export function bar() { console.log('bar') }
+export function baz() {
+  foo();
+  bar();
+}
+
+export default {foo, bar, baz}
+
+// a.js, using default export
+
+import util from './util'
+util.foo()
+
+// b.js, using named exports
+import {bar} from './util'
+bar()
+
+// Or, as @loganfsmyth suggested, you can do without default export and just use, to get all named exports in one object.
+import * as util from './util'
 
 //3. Print json object to html
 return (
